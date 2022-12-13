@@ -1,0 +1,30 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <input type="text" id="input" placeholder="Please enter your task">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="task-list"></ul>
+        <script>
+            function addTask() {
+                var inputElement = document.getElementById("input");
+                if(inputElement.value.length > 0){
+                var taskList = document.getElementById("task-list");
+                var taskItem = document.createElement("li");
+                taskList.append(taskItem);
+                taskItem.innerHTML = inputElement.value;
+                var delBtn = document.createElement("button");
+                taskItem.appendChild(delBtn);
+                delBtn.innerHTML = "Delete Task";
+                inputElement.value = "";
+                function delTask() {
+                    taskItem.remove();
+                }
+                delBtn.addEventListener("click", delTask)
+                } else{
+                    alert("The Task must not be empty")
+                }
+            }
+        </script>
+    </body>
+</html>

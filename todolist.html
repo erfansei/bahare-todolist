@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>To Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./font.css">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+      <!-- <img class="img" src="./purplebg.png" alt=""> -->
+      <div class="main">
+        <div class="container">
+          <p>Hello, Welcome to To Do List Online Website</p>
+          <div class="content">
+            <input id="input" type="text" placeholder="Please enter your task" />
+            <button id="add-btn" onclick="addTask()">Add Task</button>
+            <ul id="task-list"></ul>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="img"></div>
+      </footer>
+  </body>
+  <script>
+    var inputElement = document.getElementById("input");
+    inputElement.addEventListener("keypress", onEnter);
+    function onEnter(event) {
+        console.log(event);
+        if(event.key === "Enter"){
+            addTask()
+        }
+    }
+    function addTask() {
+      if (inputElement.value.length > 0) {
+        var taskList = document.getElementById("task-list");
+        var taskItems = document.createElement("li");
+        taskItems.innerHTML = inputElement.value;
+        inputElement.value = "";
+        var delBtn = document.createElement("button");
+        delBtn.innerHTML = "Delete";
+        // var taskItemStyle = taskItems.style;
+        // taskItemStyle.opacity = "0"
+        // taskItemStyle.transition = "all 2s"
+        // taskItemStyle.border = "1px solid #5c5cff"
+        // taskItemStyle.padding = "8px 12px"
+        // taskItemStyle.marginRight = "12px"
+        // taskItemStyle.borderRadius = "6px"
+        // var delBtnStyle = delBtn.style;
+        // delBtnStyle.background = "#FFECEC";
+        // delBtnStyle.border = "none";
+        // delBtnStyle.color = "#DF1010";
+        // delBtnStyle.marginLeft = "8px"
+        // delBtnStyle.padding = "4px 12px"
+        // delBtnStyle.borderRadius = "4px"
+        // delBtnStyle.fontFamily = "Roboto";
+        // delBtnStyle.fontWeight = "400";
+        // delBtnStyle.fontSize = "14px";
+        taskItems.classList = "anim-fade";
+        taskItems.appendChild(delBtn);
+        taskList.appendChild(taskItems);
+        // taskItemStyle.opacity = "1";
+        delBtn.addEventListener("click", delTask);
+        function delTask() {
+            taskItems.remove();
+        }
+        function Done() {
+            taskItems.classList.toggle("done");
+        }
+        taskItems.addEventListener("click", Done)
+      } else {
+        alert("The task must not be empty");
+      }
+    }
+  </script>
+</html>
